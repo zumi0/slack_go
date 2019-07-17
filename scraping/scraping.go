@@ -1,7 +1,6 @@
-package main
+package scraping
 
 import (
-  "fmt"
   "github.com/PuerkitoBio/goquery"
 )
 
@@ -15,5 +14,5 @@ func main() {
   // selected texts
   following := doc.Find(selecter_following).Text()
   followers := doc.Find(selecter_followers).Text()
-  fmt.Printf("フォロー：%s, フォロワー：%s", following, followers)
+  return following, followers
 }
