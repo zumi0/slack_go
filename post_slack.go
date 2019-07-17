@@ -3,7 +3,6 @@ package main
 import (
   "github.com/nlopes/slack"
   "./scraping"
-  "./key"
   "fmt"
   "time"
 )
@@ -16,12 +15,17 @@ func main() {
   // make date info
   date := time.Now()
   date_info := fmt.Sprintf("%d年%d月%d日の情報",date.Year(),int(date.Month()),int(date.Day()))
-  text_info := fmt.Sprintf("%s\n%s\n", date_info, number_info)
 
-  api := slack.New(key.API_KEY())
-  params := slack.PostMessageParameters{
-    Username: "twi_bot",
+  token := "YOUR_TOKEN"
+  api := slack.New(token)
+  attachment := slack.Attachment{
+    Text: number_info,
   }
 
-  api.PostMessages("twitter", text_info, params)
+  channelID, timestamp, err := api.PostMessage("twitter", slack.MsgOptionText(date_info, false), slack.MsgOptionAttachments(attachment))
+  if err != nil {
+    fmt.Printf("%s\n", err)
+    return
+  }
+  fmt.Printf("Message successfully sent to channel %s at %s", channelID, timestamp)
 }
