@@ -4,7 +4,7 @@ import (
   "github.com/PuerkitoBio/goquery"
 )
 
-func scraping() {
+func Scraping() (string, string) {
   url := "https://twitter.com/NuinkTSUKUBA"
   // get method
   doc, _ := goquery.NewDocument(url)
