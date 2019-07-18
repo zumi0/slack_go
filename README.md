@@ -1,4 +1,6 @@
 # slack_go
-make slack bot by golang
+## scraping package
+scraping.go : scraping some page
 
-key dir have API_KEY.
+## post slack
+post_slack.go : post scraping data to slack
