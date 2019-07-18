@@ -5,7 +5,7 @@ import (
 )
 
 func Scraping() (string, string) {
-  url := "https://twitter.com/NuinkTSUKUBA"
+  url := "URL"
   // get method
   doc, _ := goquery.NewDocument(url)
   // css selecter
